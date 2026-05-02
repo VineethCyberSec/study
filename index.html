@@ -84,13 +84,13 @@ body {
     backdrop-filter: blur(15px);
 }
 
-/* Q&A Styling */
+/* Q&A BOX */
 .qa {
     margin-bottom: 15px;
-    padding: 10px;
-    border-left: 4px solid #4a69bd;
+    padding: 12px;
+    border-left: 5px solid #4a69bd;
     background: #f7f9ff;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 /* Popup */
@@ -110,7 +110,7 @@ body {
     background: white;
     padding: 20px;
     width: 90%;
-    max-width: 650px;
+    max-width: 700px;
     border-radius: 15px;
     max-height: 80vh;
     overflow-y: auto;
@@ -150,13 +150,6 @@ body {
 <li onclick="openTab('proxy')">Proxy & URL Filtering</li>
 <li onclick="openTab('edr')">EDR</li>
 <li onclick="openTab('attacks')">Advanced Attacks</li>
-<li onclick="openTab('soar')">SOAR</li>
-<li onclick="openTab('sentinel')">Microsoft Sentinel</li>
-<li onclick="openTab('compliance')">Compliance</li>
-<li onclick="openTab('hr')">HR Round</li>
-<li onclick="openTab('resume')">Resume Q&A</li>
-<li onclick="openTab('tools')">Security Tools</li>
-<li onclick="openTab('realtime')">Real-Time Attacks</li>
 </ul>
 </div>
 
@@ -164,10 +157,9 @@ body {
 <div class="container">
 <div class="card">
 <h2>Welcome</h2>
-<p>Click ☰ → Select Topic → Popup Q&A will open</p>
+<p>Click ☰ → Select Topic → Popup Q&A opens</p>
 </div>
 
-<!-- Gallery -->
 <div class="card">
 <h2>Gallery</h2>
 <div class="gallery">
@@ -190,295 +182,190 @@ function toggleMenu(){
 }
 
 function openTab(tab){
-    let data = "";
+let data = "";
 
-    if(tab === "fundamentals"){
-        data = `
-        <h3>SOC Fundamentals & Thinking</h3>
+if(tab === "fundamentals"){
+data = `
+<h3>SOC Fundamentals & Thinking</h3>
 
-        <div class="qa">
-        <b>Q1: What is a Security Operations Center (SOC)?</b>
-        <p>A Security Operations Center (SOC) is a centralized unit that monitors, detects, and responds to cybersecurity threats in real time.
-        It acts like a digital control room where analysts keep watch over systems, networks, and endpoints.
-        SOC teams use tools like SIEM to analyze logs and identify suspicious activities.
-        The main goal is to prevent attacks or minimize damage quickly.
-        Think of it as the frontline defense team of an organization’s cybersecurity.</p>
-        </div>
+<div class="qa">
+<b>Q1: What is a Security Operations Center (SOC)?</b>
+<p>A Security Operations Center (SOC) is a centralized unit that monitors, detects, and responds to cybersecurity threats in real time.
+It acts like a digital control room where analysts keep watch over systems, networks, and endpoints.
+SOC teams use tools like SIEM to analyze logs and identify suspicious activities.
+The main goal is to prevent attacks or minimize damage quickly.
+Think of it as the frontline defense team of an organization’s cybersecurity.</p>
+</div>
 
-        <div class="qa">
-        <b>Q2: Who is a SOC Analyst Level 1?</b>
-        <p>A SOC L1 Analyst is the first responder in cybersecurity monitoring.
-        They monitor alerts, analyze logs, and identify potential threats using security tools.
-        Their job is to triage alerts—separating real threats from false positives.
-        They escalate serious incidents to higher-level analysts (L2/L3).
-        This role builds strong fundamentals in networking, logs, and security thinking.</p>
-        </div>
+<div class="qa">
+<b>Q2: Who is a SOC Analyst Level 1?</b>
+<p>A SOC L1 Analyst is the first responder in cybersecurity monitoring.
+They monitor alerts, analyze logs, and identify potential threats using security tools.
+Their job is to triage alerts—separating real threats from false positives.
+They escalate serious incidents to higher-level analysts (L2/L3).
+This role builds strong fundamentals in networking, logs, and security thinking.</p>
+</div>
 
-        <div class="qa">
-        <b>Q3:What is SIEM?</b>
-        <p>SIEM stands for Security Information and Event Management.
-        It collects logs from different systems like servers, firewalls, and endpoints.
-        Then it analyzes these logs to detect suspicious patterns or attacks.
-        SIEM tools generate alerts when something unusual happens.
-        Examples include Splunk, IBM QRadar, and Microsoft Sentinel.</p>
-        </div>
+<div class="qa">
+<b>Q3: What is SIEM?</b>
+<p>SIEM stands for Security Information and Event Management.
+It collects logs from different systems like servers, firewalls, and endpoints.
+Then it analyzes these logs to detect suspicious patterns or attacks.
+SIEM tools generate alerts when something unusual happens.
+Examples include Splunk, IBM QRadar, and Microsoft Sentinel.</p>
+</div>
 
-        <div class="qa">
-        <b>Q4: What is a Security Incident?</b>
-        <p>A security incident is any event that threatens the confidentiality, integrity, or availability of data.
-        Examples include malware infection, unauthorized access, or data breaches.
-        Not all alerts are incidents—only confirmed threats are incidents.
-        SOC analysts investigate alerts to determine if they are real incidents.
-        Proper incident handling reduces damage and prevents future attacks.</p>
-        </div>
+<div class="qa">
+<b>Q4: What is a Security Incident?</b>
+<p>A security incident is any event that threatens the confidentiality, integrity, or availability of data.
+Examples include malware infection, unauthorized access, or data breaches.
+Not all alerts are incidents—only confirmed threats are incidents.
+SOC analysts investigate alerts to determine if they are real incidents.
+Proper incident handling reduces damage and prevents future attacks.</p>
+</div>
 
-        <div class="qa">
-        <b>Q5: What is a False Positive?</b>
-        <p>A false positive is when a security tool flags normal activity as malicious.
-        For example, a legitimate login may be marked as suspicious.
-        SOC analysts must carefully analyze alerts to avoid unnecessary panic.
-        Too many false positives waste time and resources.
-        Good analysts learn to filter noise and focus on real threats.</p>
-        </div>
+<div class="qa">
+<b>Q5: What is a False Positive?</b>
+<p>A false positive is when a security tool flags normal activity as malicious.
+For example, a legitimate login may be marked as suspicious.
+SOC analysts must carefully analyze alerts to avoid unnecessary panic.
+Too many false positives waste time and resources.
+Good analysts learn to filter noise and focus on real threats.</p>
+</div>
 
+<div class="qa">
+<b>Q6: What is a True Positive?</b>
+<p>A true positive is when a security alert correctly identifies a real threat.
+For example, detecting malware or unauthorized login successfully.
+These alerts require immediate investigation and response.
+SOC analysts validate and escalate true positives quickly.
+Accurate detection is critical for strong security operations.</p>
+</div>
 
-        <div class="qa">
-        <b>Q6: What is a True Positive?</b>
-        <p>A true positive is when a security alert correctly identifies a real threat.
-        For example, detecting malware or unauthorized login successfully.
-        These alerts require immediate investigation and response.
-        SOC analysts validate and escalate true positives quickly.
-        Accurate detection is critical for strong security operations.</p>
-        </div>
+<div class="qa">
+<b>Q7: What is Log Analysis?</b>
+<p>Log analysis is the process of reviewing system-generated records (logs).
+Logs contain details like login attempts, errors, and system activities.
+SOC analysts use logs to detect suspicious behavior.
+For example, multiple failed logins may indicate a brute-force attack.
+Understanding logs is a core skill for SOC Level 1.</p>
+</div>
 
-        <div class="qa">
-        <b>Q7: What is Log Analysis?</b>
-        <p>Log analysis is the process of reviewing system-generated records (logs).
-        Logs contain details like login attempts, errors, and system activities.
-        SOC analysts use logs to detect suspicious behavior.
-        For example, multiple failed logins may indicate a brute-force attack.
-        Understanding logs is a core skill for SOC Level 1.</p>
-        </div>
+<div class="qa">
+<b>Q8: What is Alert?</b>
+<p>An alert is a notification generated by security tools when suspicious activity is detected.
+Alerts can come from SIEM, IDS, antivirus, or firewalls.
+Not every alert is dangerous—it must be investigated.
+SOC analysts review alerts and decide their severity.
+Alerts are the starting point of every investigation.</p>
+</div>
 
-        <div class="qa">
-        <b>Q8: What is an Alert?</b>
-        <p>An alert is a notification generated by security tools when suspicious activity is detected.
-        Alerts can come from SIEM, IDS, antivirus, or firewalls.
-        Not every alert is dangerous—it must be investigated.
-        SOC analysts review alerts and decide their severity.
-        Alerts are the starting point of every investigation..</p>
-        </div>
+<div class="qa">
+<b>Q9: What is Threat Intelligence?</b>
+<p>Threat intelligence is information about potential or existing cyber threats.
+It includes data like malicious IPs, domains, and attack techniques.
+SOC teams use it to detect and prevent attacks faster.
+It helps analysts understand attacker behavior and trends.
+Sources include open-source intelligence (OSINT) and paid feeds..</p>
+</div>
 
-         <div class="qa">
-        <b>Q9: What is Threat Intelligence?</b>
-        <p>Threat intelligence is information about potential or existing cyber threats.
-        It includes data like malicious IPs, domains, and attack techniques.
-        SOC teams use it to detect and prevent attacks faster.
-        It helps analysts understand attacker behavior and trends.
-        Sources include open-source intelligence (OSINT) and paid feeds.</p>
-        </div>
+<div class="qa">
+<b>Q10: What is Ndicator of Compromise IOC?</b>
+<p>IOC is evidence that shows a system may be compromised.
+Examples include suspicious IP addresses, file hashes, or domains.
+SOC analysts use IOCs to detect attacks in systems.
+They compare logs with known IOCs to find threats.
+IOCs help in quick identification of malicious activity.</p>
+</div>
 
-        <div class="qa">
-        <b>Q10: What is an Indicator of Compromise (IOC)?</b>
-        <p>IOC is evidence that shows a system may be compromised.
-        Examples include suspicious IP addresses, file hashes, or domains.
-        SOC analysts use IOCs to detect attacks in systems.
-        They compare logs with known IOCs to find threats.
-        IOCs help in quick identification of malicious activity.</p>
+<div class="qa">
+<b>Q11: What is Malware?</b>
+<p>Malware is malicious software designed to harm systems.
+Types include viruses, worms, ransomware, and trojans.
+It can steal data, damage systems, or give attackers access.
+SOC analysts detect malware using tools and logs.
+Preventing malware is a key part of cybersecurity.</p>
+</div>
 
-        <div class="qa">
-        <b>Q10: What is an Indicator of Compromise (IOC)?</b>
-        <p>IOC is evidence that shows a system may be compromised.
-        Examples include suspicious IP addresses, file hashes, or domains.
-        SOC analysts use IOCs to detect attacks in systems.
-        They compare logs with known IOCs to find threats.
-        IOCs help in quick identification of malicious activity.</p>
-        </div>
+<div class="qa">
+<b>Q12: What is Phishing?</b>
+<p>Phishing is a social engineering attack where attackers trick users into sharing sensitive data.
+Usually done through fake emails or websites.
+Attackers pretend to be trusted sources like banks or companies.
+Users may unknowingly provide passwords or personal details.
+SOC teams monitor and respond to phishing campaigns.</p>
+</div>
 
-        <div class="qa">
-        <b>Q11: What is Malware?</b>
-        <p>Malware is malicious software designed to harm systems.
-        Types include viruses, worms, ransomware, and trojans.
-        It can steal data, damage systems, or give attackers access.
-        SOC analysts detect malware using tools and logs.
-        Preventing malware is a key part of cybersecurity.</p>
-        </div>
+<div class="qa">
+<b>Q13: What is Firewall?</b>
+<p>A firewall is a security device that controls network traffic.
+It allows or blocks traffic based on security rules.
+Firewalls protect internal networks from external threats.
+They can be hardware-based or software-based.
+SOC analysts monitor firewall logs for suspicious activity.</p>
+</div>
 
-        <div class="qa">
-        <b>Q12: What is Phishing?</b>
-        <p>Phishing is a social engineering attack where attackers trick users into sharing sensitive data.
-        Usually done through fake emails or websites.
-        Attackers pretend to be trusted sources like banks or companies.
-        Users may unknowingly provide passwords or personal details.
-        SOC teams monitor and respond to phishing campaigns.</p>
-        </div>
+<div class="qa">
+<b>Q14: What is IDS & IPS?</b>
+<p>IDS stands for Intrusion Detection System, and IPS stands for Intrusion Prevention System.
+IDS detects suspicious activity and alerts the SOC team.
+IPS not only detects but also blocks the threat automatically.
+Both systems help protect networks from attacks.
+They are essential tools in a SOC environment.</p>
+</div>
 
-        <div class="qa">
-        <b>Q13: What is Firewall?</b>
-        <p>A firewall is a security device that controls network traffic.
-        It allows or blocks traffic based on security rules.
-        Firewalls protect internal networks from external threats.
-        They can be hardware-based or software-based.
-        SOC analysts monitor firewall logs for suspicious activity.</p>
-        </div>
+<div class="qa">
+<b>Q15: What is CIA Triad?</b>
+<p>The CIA Triad stands for Confidentiality, Integrity, and Availability.
+Confidentiality ensures data is accessible only to authorized users.
+Integrity ensures data is accurate and not altered.
+Availability ensures systems and data are accessible when needed.
+This is the foundation of all cybersecurity principles.</p>
+</div>
+`;
+}
 
-        <div class="qa">
-        <b>Q14: What is IDS and IPS?</b>
-        <p>IDS stands for Intrusion Detection System, and IPS stands for Intrusion Prevention System.
-        IDS detects suspicious activity and alerts the SOC team.
-        IPS not only detects but also blocks the threat automatically.
-        Both systems help protect networks from attacks.
-        They are essential tools in a SOC environment.</p>
-        </div>
+if(tab === "networking"){
+data = `<div class="qa"><b>Q: TCP Handshake?</b><p>SYN → SYN-ACK → ACK</p></div>`;
+}
 
-        <div class="qa">
-        <b>Q15: What is CIA Triad?</b>
-        <p>The CIA Triad stands for Confidentiality, Integrity, and Availability.
-        Confidentiality ensures data is accessible only to authorized users.
-        Integrity ensures data is accurate and not altered.
-        Availability ensures systems and data are accessible when needed.
-        This is the foundation of all cybersecurity principles.</p>
-        </div>
-      
-        
-        `;
-    }
+if(tab === "siem"){
+data = `<div class="qa"><b>Q: SIEM?</b><p>Log monitoring tool.</p></div>`;
+}
 
-    if(tab === "networking"){
-        data = `
-        <h3>Networking</h3>
-        <div class="qa">
-        <b>Q: What is TCP 3-way handshake?</b>
-        <p>SYN → SYN-ACK → ACK</p>
-        </div>`;
-    }
+if(tab === "email"){
+data = `<div class="qa"><b>Q: SPF?</b><p>Validates sender.</p></div>`;
+}
 
-    if(tab === "siem"){
-        data = `
-        <h3>SIEM</h3>
-        <div class="qa">
-        <b>Q: What is SIEM?</b>
-        <p>Collects and analyzes logs for threats.</p>
-        </div>`;
-    }
+if(tab === "proxy"){
+data = `<div class="qa"><b>Q: Proxy?</b><p>Middle server.</p></div>`;
+}
 
-    if(tab === "email"){
-        data = `
-        <h3>Email Security</h3>
-        <div class="qa">
-        <b>Q: What is SPF?</b>
-        <p>Validates sender IP.</p>
-        </div>`;
-    }
+if(tab === "edr"){
+data = `<div class="qa"><b>Q: EDR?</b><p>Endpoint security tool.</p></div>`;
+}
 
-    if(tab === "proxy"){
-        data = `
-        <h3>Proxy</h3>
-        <div class="qa">
-        <b>Q: What is Proxy?</b>
-        <p>Intermediary between user and internet.</p>
-        </div>`;
-    }
+if(tab === "attacks"){
+data = `<div class="qa"><b>Q: Phishing?</b><p>Social engineering attack.</p></div>`;
+}
 
-    if(tab === "edr"){
-        data = `
-        <h3>EDR</h3>
-        <div class="qa">
-        <b>Q: What is EDR?</b>
-        <p>Endpoint threat detection tool.</p>
-        </div>`;
-    }
-
-    if(tab === "attacks"){
-        data = `
-        <h3>Advanced Attacks</h3>
-        <div class="qa">
-        <b>Q: What is phishing?</b>
-        <p>Fake emails to steal data.</p>
-        </div>`;
-    }
-
-    if(tab === "soar"){
-        data = `
-        <h3>SOAR</h3>
-        <div class="qa">
-        <b>Q: What is SOAR?</b>
-        <p>Automates incident response.</p>
-        </div>`;
-    }
-
-    if(tab === "sentinel"){
-        data = `
-        <h3>Microsoft Sentinel</h3>
-        <div class="qa">
-        <b>Q: What is Sentinel?</b>
-        <p>Cloud SIEM by Microsoft.</p>
-        </div>`;
-    }
-
-    if(tab === "compliance"){
-        data = `
-        <h3>Compliance</h3>
-        <div class="qa">
-        <b>Q: What is compliance?</b>
-        <p>Following security standards.</p>
-        </div>`;
-    }
-
-    if(tab === "hr"){
-        data = `
-        <h3>HR Round</h3>
-        <div class="qa">
-        <b>Q: Tell me about yourself</b>
-        <p>Short intro + skills + goal in cybersecurity.</p>
-        </div>`;
-    }
-
-    if(tab === "resume"){
-        data = `
-        <h3>Resume Q&A</h3>
-        <div class="qa">
-        <b>Q: Explain your project</b>
-        <p>Explain clearly with tools used.</p>
-        </div>`;
-    }
-
-    if(tab === "tools"){
-        data = `
-        <h3>Security Tools</h3>
-        <div class="qa">
-        <b>Q: Example tools?</b>
-        <p>Wireshark, Splunk, Sentinel.</p>
-        </div>`;
-    }
-
-    if(tab === "realtime"){
-        data = `
-        <h3>Real-Time Attacks</h3>
-        <div class="qa">
-        <b>Q: What is brute force?</b>
-        <p>Multiple login attempts attack.</p>
-        </div>`;
-    }
-
-    document.getElementById("popupData").innerHTML = data;
-    document.getElementById("popup").style.display = "flex";
+document.getElementById("popupData").innerHTML = data;
+document.getElementById("popup").style.display = "flex";
 }
 
 function closePopup(){
-    document.getElementById("popup").style.display = "none";
+document.getElementById("popup").style.display = "none";
 }
 
 function openImage(src){
-    document.getElementById("popupData").innerHTML = "<img src='"+src+"' style='width:100%'>";
-    document.getElementById("popup").style.display = "flex";
+document.getElementById("popupData").innerHTML = "<img src='"+src+"' style='width:100%'>";
+document.getElementById("popup").style.display = "flex";
 }
 
-/* Disable copy shortcuts */
 document.addEventListener("keydown", function(e){
-    if(e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')){
-        e.preventDefault();
-    }
+if(e.ctrlKey && (e.key === 'c' || e.key === 'u')){
+e.preventDefault();
+}
 });
 </script>
 
