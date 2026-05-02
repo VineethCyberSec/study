@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOC Level 1 - Cybersecurity Hub</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Background */
+body {
+    background: linear-gradient(135deg, #eaf3ff, #ffffff);
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.6);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0a3d62;
+}
+
+/* Menu */
+.menu-btn {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    right: -320px;
+    top: 0;
+    width: 320px;
+    height: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(20px);
+    transition: 0.4s;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+    color: #0a3d62;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    margin-bottom: 8px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar ul li:hover {
+    background: #dfe9ff;
+}
+
+/* Cards */
+.container {
+    padding: 20px;
+}
+
+.card {
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.7);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    background: #4a69bd;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup img {
+    max-width: 90%;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* Gallery */
+.gallery img {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Disable selection */
+body {
+    user-select: none;
+}
+</style>
+</head>
+
+<body oncontextmenu="return false">
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="title">SOC Level 1 Hub</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <h3>Topics</h3>
+    <ul>
+        <li onclick="showTab('fundamentals')">SOC Fundamentals & Thinking</li>
+        <li onclick="showTab('networking')">Networking for SOC</li>
+        <li onclick="showTab('siem')">SIEM Core Skills</li>
+        <li onclick="showTab('interview')">SOC L1 Interview</li>
+        <li onclick="showTab('email')">Email Security (SPF/DKIM/DMARC)</li>
+        <li onclick="showTab('proxy')">Proxy & URL Filtering</li>
+        <li onclick="showTab('edr')">EDR</li>
+        <li onclick="showTab('attacks')">Advanced Attacks</li>
+        <li onclick="showTab('soar')">SOAR</li>
+        <li onclick="showTab('sentinel')">Microsoft Sentinel</li>
+        <li onclick="showTab('compliance')">Compliance & Governance</li>
+        <li onclick="showTab('hr')">HR Round</li>
+        <li onclick="showTab('insider')">Insider Threat</li>
+        <li onclick="showTab('head')">SOC Head Round</li>
+        <li onclick="showTab('resume')">Resume Q&A</li>
+        <li onclick="showTab('tools')">Security Tools</li>
+        <li onclick="showTab('realtime')">Real-time Attacks</li>
+    </ul>
+</div>
+
+<!-- Content -->
+<div class="container">
+
+    <!-- Example Card -->
+    <div class="card" id="content">
+        <h2>Welcome to SOC Level 1</h2>
+        <p>This is your cybersecurity learning dashboard.</p>
+        <br>
+        <button class="btn" onclick="openImage()">Open Example Image</button>
+    </div>
+
+    <!-- Gallery -->
+    <div class="card">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" onclick="openImage()">
+        </div>
+    </div>
+
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+    <span class="close" onclick="closeImage()">×</span>
+    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
+</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+function showTab(tab) {
+    document.getElementById("content").innerHTML = `
+        <h2>${tab.toUpperCase()}</h2>
+        <p>Content coming soon... Add your notes here.</p>
+    `;
+}
+
+function openImage() {
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closeImage() {
+    document.getElementById("popup").style.display = "none";
+}
+
+/* Disable copy shortcuts */
+document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
+        e.preventDefault();
+    }
+});
+</script>
+
+</body>
+</html>
