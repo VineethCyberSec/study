@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOC Level 1 - Cybersecurity Hub</title>
+<title>SOC L1 Cyber Hub</title>
 
 <style>
 * {
@@ -13,45 +13,43 @@
     font-family: "Segoe UI", sans-serif;
 }
 
-/* Background */
 body {
-    background: linear-gradient(135deg, #eaf3ff, #ffffff);
-    min-height: 100vh;
+    background: linear-gradient(135deg,#eef4ff,#ffffff);
 }
 
 /* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 15px 25px;
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.7);
     backdrop-filter: blur(15px);
-    background: rgba(255,255,255,0.6);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 
 .title {
-    font-size: 22px;
     font-weight: bold;
-    color: #0a3d62;
+    color: #1e3799;
 }
 
-/* Menu */
 .menu-btn {
     font-size: 22px;
     cursor: pointer;
 }
 
-/* Sidebar */
+/* Sidebar FIX */
 .sidebar {
     position: fixed;
     right: -320px;
     top: 0;
-    width: 320px;
+    width: 300px;
     height: 100%;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(20px);
-    transition: 0.4s;
+    background: white;
     padding: 20px;
+    transition: 0.3s;
+    z-index: 2000; /* FIX */
     overflow-y: auto;
 }
 
@@ -59,57 +57,37 @@ body {
     right: 0;
 }
 
-.sidebar h3 {
-    margin-bottom: 10px;
-    color: #0a3d62;
-}
-
-.sidebar ul {
+.sidebar li {
     list-style: none;
-}
-
-.sidebar ul li {
     padding: 10px;
-    margin-bottom: 8px;
-    background: rgba(255,255,255,0.6);
+    margin: 8px 0;
+    background: #f1f5ff;
     border-radius: 10px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.sidebar ul li:hover {
-    background: #dfe9ff;
+.sidebar li:hover {
+    background: #d6e0ff;
 }
 
-/* Cards */
+/* Content */
 .container {
-    padding: 20px;
+    padding: 100px 20px;
 }
 
 .card {
-    backdrop-filter: blur(20px);
-    background: rgba(255,255,255,0.7);
-    border-radius: 15px;
     padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-/* Buttons */
-.btn {
-    padding: 10px 20px;
-    border: none;
-    background: #4a69bd;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(15px);
 }
 
 /* Popup */
 .popup {
     display: none;
     position: fixed;
-    top: 0; left: 0;
+    z-index: 3000;
+    left: 0; top: 0;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.7);
@@ -117,28 +95,23 @@ body {
     align-items: center;
 }
 
-.popup img {
-    max-width: 90%;
-    border-radius: 10px;
+.popup-content {
+    background: white;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 15px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: white;
-    font-size: 25px;
+    float: right;
     cursor: pointer;
+    font-size: 20px;
 }
 
-/* Gallery */
-.gallery img {
-    width: 100%;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-/* Disable selection */
+/* Disable copy */
 body {
     user-select: none;
 }
@@ -147,86 +120,104 @@ body {
 
 <body oncontextmenu="return false">
 
-<!-- Navbar -->
 <div class="navbar">
-    <div class="title">SOC Level 1 Hub</div>
+    <div class="title">SOC L1 Training</div>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </div>
 
-<!-- Sidebar -->
 <div class="sidebar" id="sidebar">
-    <h3>Topics</h3>
-    <ul>
-        <li onclick="showTab('fundamentals')">SOC Fundamentals & Thinking</li>
-        <li onclick="showTab('networking')">Networking for SOC</li>
-        <li onclick="showTab('siem')">SIEM Core Skills</li>
-        <li onclick="showTab('interview')">SOC L1 Interview</li>
-        <li onclick="showTab('email')">Email Security (SPF/DKIM/DMARC)</li>
-        <li onclick="showTab('proxy')">Proxy & URL Filtering</li>
-        <li onclick="showTab('edr')">EDR</li>
-        <li onclick="showTab('attacks')">Advanced Attacks</li>
-        <li onclick="showTab('soar')">SOAR</li>
-        <li onclick="showTab('sentinel')">Microsoft Sentinel</li>
-        <li onclick="showTab('compliance')">Compliance & Governance</li>
-        <li onclick="showTab('hr')">HR Round</li>
-        <li onclick="showTab('insider')">Insider Threat</li>
-        <li onclick="showTab('head')">SOC Head Round</li>
-        <li onclick="showTab('resume')">Resume Q&A</li>
-        <li onclick="showTab('tools')">Security Tools</li>
-        <li onclick="showTab('realtime')">Real-time Attacks</li>
-    </ul>
+<ul>
+<li onclick="openTab('fundamentals')">SOC Fundamentals</li>
+<li onclick="openTab('networking')">Networking</li>
+<li onclick="openTab('siem')">SIEM</li>
+<li onclick="openTab('email')">Email Security</li>
+<li onclick="openTab('edr')">EDR</li>
+<li onclick="openTab('attacks')">Advanced Attacks</li>
+</ul>
 </div>
 
-<!-- Content -->
 <div class="container">
-
-    <!-- Example Card -->
-    <div class="card" id="content">
-        <h2>Welcome to SOC Level 1</h2>
-        <p>This is your cybersecurity learning dashboard.</p>
-        <br>
-        <button class="btn" onclick="openImage()">Open Example Image</button>
-    </div>
-
-    <!-- Gallery -->
-    <div class="card">
-        <h2>Gallery</h2>
-        <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" onclick="openImage()">
-        </div>
-    </div>
-
+<div class="card">
+<h2>Welcome</h2>
+<p>Click menu → choose topic → popup Q&A appears.</p>
+</div>
 </div>
 
-<!-- Popup -->
+<!-- POPUP -->
 <div class="popup" id="popup">
-    <span class="close" onclick="closeImage()">×</span>
-    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
+<div class="popup-content">
+<span class="close" onclick="closePopup()">×</span>
+<div id="popupData"></div>
+</div>
 </div>
 
 <script>
-function toggleMenu() {
+function toggleMenu(){
     document.getElementById("sidebar").classList.toggle("active");
 }
 
-function showTab(tab) {
-    document.getElementById("content").innerHTML = `
-        <h2>${tab.toUpperCase()}</h2>
-        <p>Content coming soon... Add your notes here.</p>
-    `;
-}
+function openTab(tab){
+    let data = "";
 
-function openImage() {
+    if(tab === "fundamentals"){
+        data = `
+        <h3>SOC Fundamentals</h3>
+        <b>Q: What is SOC?</b>
+        <p>A Security Operations Center monitors, detects, and responds to threats 24/7.</p>
+        `;
+    }
+
+    if(tab === "networking"){
+        data = `
+        <h3>Networking</h3>
+        <b>Q: What is TCP 3-way handshake?</b>
+        <p>SYN → SYN-ACK → ACK. It establishes connection between client and server.</p>
+        `;
+    }
+
+    if(tab === "siem"){
+        data = `
+        <h3>SIEM</h3>
+        <b>Q: What is SIEM?</b>
+        <p>Security Information and Event Management collects logs and detects threats.</p>
+        `;
+    }
+
+    if(tab === "email"){
+        data = `
+        <h3>Email Security</h3>
+        <b>Q: What is SPF?</b>
+        <p>SPF verifies sender IP to prevent spoofing.</p>
+        `;
+    }
+
+    if(tab === "edr"){
+        data = `
+        <h3>EDR</h3>
+        <b>Q: What is EDR?</b>
+        <p>Endpoint Detection and Response monitors endpoints for threats.</p>
+        `;
+    }
+
+    if(tab === "attacks"){
+        data = `
+        <h3>Advanced Attacks</h3>
+        <b>Q: What is phishing?</b>
+        <p>Attackers trick users into revealing credentials.</p>
+        `;
+    }
+
+    document.getElementById("popupData").innerHTML = data;
     document.getElementById("popup").style.display = "flex";
 }
 
-function closeImage() {
+function closePopup(){
     document.getElementById("popup").style.display = "none";
 }
 
-/* Disable copy shortcuts */
-document.addEventListener("keydown", function(e) {
-    if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
+/* Disable shortcuts */
+document.addEventListener("keydown", function(e){
+    if(e.ctrlKey && (e.key === 'c' || e.key === 'u')){
         e.preventDefault();
     }
 });
