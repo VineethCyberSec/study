@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOC L1 Cyber Hub</title>
+<title>SOC L1 Training Hub</title>
 
 <style>
 * {
@@ -15,6 +15,7 @@
 
 body {
     background: linear-gradient(135deg,#eef4ff,#ffffff);
+    user-select: none;
 }
 
 /* Navbar */
@@ -31,6 +32,7 @@ body {
 
 .title {
     font-weight: bold;
+    font-size: 18px;
     color: #1e3799;
 }
 
@@ -39,7 +41,7 @@ body {
     cursor: pointer;
 }
 
-/* Sidebar FIX */
+/* Sidebar */
 .sidebar {
     position: fixed;
     right: -320px;
@@ -49,7 +51,7 @@ body {
     background: white;
     padding: 20px;
     transition: 0.3s;
-    z-index: 2000; /* FIX */
+    z-index: 2000;
     overflow-y: auto;
 }
 
@@ -82,6 +84,15 @@ body {
     backdrop-filter: blur(15px);
 }
 
+/* Q&A Styling */
+.qa {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-left: 4px solid #4a69bd;
+    background: #f7f9ff;
+    border-radius: 8px;
+}
+
 /* Popup */
 .popup {
     display: none;
@@ -99,7 +110,7 @@ body {
     background: white;
     padding: 20px;
     width: 90%;
-    max-width: 600px;
+    max-width: 650px;
     border-radius: 15px;
     max-height: 80vh;
     overflow-y: auto;
@@ -111,39 +122,61 @@ body {
     font-size: 20px;
 }
 
-/* Disable copy */
-body {
-    user-select: none;
+/* Gallery */
+.gallery img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 </style>
 </head>
 
 <body oncontextmenu="return false">
 
+<!-- Navbar -->
 <div class="navbar">
-    <div class="title">SOC L1 Training</div>
+    <div class="title">SOC L1 Cyber Hub</div>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </div>
 
+<!-- Sidebar -->
 <div class="sidebar" id="sidebar">
 <ul>
 <li onclick="openTab('fundamentals')">SOC Fundamentals</li>
 <li onclick="openTab('networking')">Networking</li>
 <li onclick="openTab('siem')">SIEM</li>
 <li onclick="openTab('email')">Email Security</li>
+<li onclick="openTab('proxy')">Proxy & URL Filtering</li>
 <li onclick="openTab('edr')">EDR</li>
 <li onclick="openTab('attacks')">Advanced Attacks</li>
+<li onclick="openTab('soar')">SOAR</li>
+<li onclick="openTab('sentinel')">Microsoft Sentinel</li>
+<li onclick="openTab('compliance')">Compliance</li>
+<li onclick="openTab('hr')">HR Round</li>
+<li onclick="openTab('resume')">Resume Q&A</li>
+<li onclick="openTab('tools')">Security Tools</li>
+<li onclick="openTab('realtime')">Real-Time Attacks</li>
 </ul>
 </div>
 
+<!-- Main -->
 <div class="container">
 <div class="card">
 <h2>Welcome</h2>
-<p>Click menu → choose topic → popup Q&A appears.</p>
+<p>Click ☰ → Select Topic → Popup Q&A will open</p>
+</div>
+
+<!-- Gallery -->
+<div class="card">
+<h2>Gallery</h2>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" onclick="openImage(this.src)">
+</div>
 </div>
 </div>
 
-<!-- POPUP -->
+<!-- Popup -->
 <div class="popup" id="popup">
 <div class="popup-content">
 <span class="close" onclick="closePopup()">×</span>
@@ -161,55 +194,150 @@ function openTab(tab){
 
     if(tab === "fundamentals"){
         data = `
-        <h3>SOC Fundamentals</h3>
-        <b>Q: What is SOC?</b>
-        <p>A Security Operations Center monitors, detects, and responds to threats 24/7.</p>
+        <h3>SOC Fundamentals & Thinking</h3>
+
+        <div class="qa">
+        <b>Q1: What is a SOC?</b>
+        <p>A Security Operations Center monitors and responds to cyber threats 24/7.</p>
+        </div>
+
+        <div class="qa">
+        <b>Q2: What does a SOC L1 Analyst do?</b>
+        <p>Monitors alerts, investigates incidents, and escalates issues.</p>
+        </div>
+
+        <div class="qa">
+        <b>Q3: What is triage?</b>
+        <p>Process of prioritizing alerts based on severity.</p>
+        </div>
+
+        <div class="qa">
+        <b>Q4: What is a false positive?</b>
+        <p>Alert that appears malicious but is actually safe.</p>
+        </div>
+
+        <div class="qa">
+        <b>Q5: What is incident response?</b>
+        <p>Identify → Contain → Eradicate → Recover.</p>
+        </div>
         `;
     }
 
-        <b>Q: What is SOC?</b>
-        <p>A Security Operations Center monitors, detects, and responds to threats 24/7.</p>
-        `;
-    }
-    
     if(tab === "networking"){
         data = `
         <h3>Networking</h3>
+        <div class="qa">
         <b>Q: What is TCP 3-way handshake?</b>
-        <p>SYN → SYN-ACK → ACK. It establishes connection between client and server.</p>
-        `;
+        <p>SYN → SYN-ACK → ACK</p>
+        </div>`;
     }
 
     if(tab === "siem"){
         data = `
         <h3>SIEM</h3>
+        <div class="qa">
         <b>Q: What is SIEM?</b>
-        <p>Security Information and Event Management collects logs and detects threats.</p>
-        `;
+        <p>Collects and analyzes logs for threats.</p>
+        </div>`;
     }
 
     if(tab === "email"){
         data = `
         <h3>Email Security</h3>
+        <div class="qa">
         <b>Q: What is SPF?</b>
-        <p>SPF verifies sender IP to prevent spoofing.</p>
-        `;
+        <p>Validates sender IP.</p>
+        </div>`;
+    }
+
+    if(tab === "proxy"){
+        data = `
+        <h3>Proxy</h3>
+        <div class="qa">
+        <b>Q: What is Proxy?</b>
+        <p>Intermediary between user and internet.</p>
+        </div>`;
     }
 
     if(tab === "edr"){
         data = `
         <h3>EDR</h3>
+        <div class="qa">
         <b>Q: What is EDR?</b>
-        <p>Endpoint Detection and Response monitors endpoints for threats.</p>
-        `;
+        <p>Endpoint threat detection tool.</p>
+        </div>`;
     }
 
     if(tab === "attacks"){
         data = `
         <h3>Advanced Attacks</h3>
+        <div class="qa">
         <b>Q: What is phishing?</b>
-        <p>Attackers trick users into revealing credentials.</p>
-        `;
+        <p>Fake emails to steal data.</p>
+        </div>`;
+    }
+
+    if(tab === "soar"){
+        data = `
+        <h3>SOAR</h3>
+        <div class="qa">
+        <b>Q: What is SOAR?</b>
+        <p>Automates incident response.</p>
+        </div>`;
+    }
+
+    if(tab === "sentinel"){
+        data = `
+        <h3>Microsoft Sentinel</h3>
+        <div class="qa">
+        <b>Q: What is Sentinel?</b>
+        <p>Cloud SIEM by Microsoft.</p>
+        </div>`;
+    }
+
+    if(tab === "compliance"){
+        data = `
+        <h3>Compliance</h3>
+        <div class="qa">
+        <b>Q: What is compliance?</b>
+        <p>Following security standards.</p>
+        </div>`;
+    }
+
+    if(tab === "hr"){
+        data = `
+        <h3>HR Round</h3>
+        <div class="qa">
+        <b>Q: Tell me about yourself</b>
+        <p>Short intro + skills + goal in cybersecurity.</p>
+        </div>`;
+    }
+
+    if(tab === "resume"){
+        data = `
+        <h3>Resume Q&A</h3>
+        <div class="qa">
+        <b>Q: Explain your project</b>
+        <p>Explain clearly with tools used.</p>
+        </div>`;
+    }
+
+    if(tab === "tools"){
+        data = `
+        <h3>Security Tools</h3>
+        <div class="qa">
+        <b>Q: Example tools?</b>
+        <p>Wireshark, Splunk, Sentinel.</p>
+        </div>`;
+    }
+
+    if(tab === "realtime"){
+        data = `
+        <h3>Real-Time Attacks</h3>
+        <div class="qa">
+        <b>Q: What is brute force?</b>
+        <p>Multiple login attempts attack.</p>
+        </div>`;
     }
 
     document.getElementById("popupData").innerHTML = data;
@@ -220,9 +348,14 @@ function closePopup(){
     document.getElementById("popup").style.display = "none";
 }
 
-/* Disable shortcuts */
+function openImage(src){
+    document.getElementById("popupData").innerHTML = "<img src='"+src+"' style='width:100%'>";
+    document.getElementById("popup").style.display = "flex";
+}
+
+/* Disable copy shortcuts */
 document.addEventListener("keydown", function(e){
-    if(e.ctrlKey && (e.key === 'c' || e.key === 'u')){
+    if(e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')){
         e.preventDefault();
     }
 });
