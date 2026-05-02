@@ -129,6 +129,56 @@ body {
     margin-top: 10px;
     cursor: pointer;
 }
+
+    /* ===== ADD-ON: GLASSY GALLERY CARDS ===== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.gallery-item {
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    transition: 0.25s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+}
+
+.gallery-item img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.gallery-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/* Rounded modern buttons */
+.view-btn, .visit-btn {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.view-btn {
+    background: linear-gradient(45deg,#4a69bd,#6a89cc);
+}
+
+.visit-btn {
+    background: linear-gradient(45deg,#38ada9,#78e08f);
+}
 </style>
 </head>
 
@@ -162,8 +212,24 @@ body {
 
 <div class="card">
 <h2>Gallery</h2>
-<div class="gallery">
-<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" onclick="openImage(this.src)">
+<div class="gallery-grid">
+
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
+        <div class="gallery-actions">
+            <button class="view-btn" onclick="openImage('https://images.unsplash.com/photo-1550751827-4bd374c3f58b')">View</button>
+            <button class="visit-btn" onclick="openLink('https://tryhackme.com')">Visit</button>
+        </div>
+    </div>
+
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87">
+        <div class="gallery-actions">
+            <button class="view-btn" onclick="openImage('https://images.unsplash.com/photo-1510511459019-5dda7724fd87')">View</button>
+            <button class="visit-btn" onclick="openLink('https://hackthebox.com')">Visit</button>
+        </div>
+    </div>
+
 </div>
 </div>
 </div>
@@ -367,6 +433,10 @@ if(e.ctrlKey && (e.key === 'c' || e.key === 'u')){
 e.preventDefault();
 }
 });
+
+    function openLink(url){
+    window.open(url, "_blank");
+}
 </script>
 
 </body>
