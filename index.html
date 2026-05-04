@@ -392,7 +392,29 @@ This is the foundation of all cybersecurity principles.</p>
 }
 
 if(tab === "networking"){
-data = `<div class="qa"><b>Q: TCP Handshake?</b><p>SYN → SYN-ACK → ACK</p></div>`;
+data = `
+<h3>Networking for SOC Level 1</h3>
+
+<div class="qa">
+<b>Q1: What is TCP 3-Way Handshake?</b>
+<p>The TCP 3-way handshake is the process used to establish a reliable connection between a client and a server.
+Step 1: SYN – Client sends a request to start communication.
+Step 2: SYN-ACK – Server acknowledges and responds.
+Step 3: ACK – Client confirms the connection.
+This process ensures both sides are ready before data transfer begins.
+SOC analysts use this to understand normal vs suspicious network behavior.</p>
+</div>
+
+<div class="qa">
+<b>Q1: What is TCP 3-Way Handshake?</b>
+<p>The TCP 3-way handshake is the process used to establish a reliable connection between a client and a server.
+Step 1: SYN – Client sends a request to start communication.
+Step 2: SYN-ACK – Server acknowledges and responds.
+Step 3: ACK – Client confirms the connection.
+This process ensures both sides are ready before data transfer begins.
+SOC analysts use this to understand normal vs suspicious network behavior.</p>
+</div>
+`;
 }
 
 if(tab === "siem"){
